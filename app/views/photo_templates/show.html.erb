@@ -1,32 +1,32 @@
 <dl>
   <dt>Image</dt>
   <dd>
-    <img src="https://robohash.org/dolorehicincidunt.png?size=300x300&amp;set=set1">
+    <img src="<%= @the_photo.image%>">
   </dd>
 
   <dt>Caption</dt>
   <dd>
-    <p>Once you’ve accepted your flaws, no one can use them against you.</p>
+    <p><%= @the_photo.caption%></p>
   </dd>
 
   <dt>Owner</dt>
   <dd>
-    catherina
+    <%= @the_photo.poster.username%>
   </dd>
 
   <dt>Posted</dt>
   <dd>
-    2019-04-27 11:56:39 UTC
+    <%= @the_photo.created_at%>
   </dd>
 
   <dt>Edit photo</dt>
   <dd>
-    <form action="/update_photo/777">
+    <form action="/update_photo/<%= @the_photo.id%>">
       <label for="browser_image">Image</label>
-      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="https://robohash.org/dolorehicincidunt.png?size=300x300&amp;set=set1">
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="<%= @the_photo.image%>">
 
       <label for="browser_caption">Caption</label>
-      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">Once you’ve accepted your flaws, no one can use them against you.</textarea>
+      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo..."><%= @the_photo.caption%></textarea>
 
       <button>Update photo</button>
     </form>
@@ -34,7 +34,7 @@
 
   <dt>Delete photo</dt>
   <dd>
-    <a href="/delete_photo/777;">
+    <a href="/delete_photo/<%= @the_photo.id%>;">
       Delete this photo
     </a>
   </dd>
@@ -61,7 +61,7 @@
 
 <form action="/insert_comment_record">
   <label for="browser_photo_id">Photo ID</label>
-  <input id="browser_photo_id" type="text" value="777" name="input_photo_id">
+  <input id="browser_photo_id" type="text" value="<%= @the_photo.id%>" name="input_photo_id">
 
   <label for="browser_author_id">Author ID</label>
   <input id="browser_author_id" type="text" name="input_author_id">
