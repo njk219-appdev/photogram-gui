@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get("/users/:path_username", {:controller => "users", :action => "show"})
   get("/photos/:path_id", {:controller => "photos", :action => "show"})
   get("/delete_photo/:toast_id", {:controller => "photos", :action => "delete"})
-  
-  #get("/insert_photo/:input_id", {:controller => "photos", :action => "delete"})
+  get("/update_photo/:modify_id", {:controller => "photos", :action => "update"})
 
 end
