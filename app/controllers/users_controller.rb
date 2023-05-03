@@ -17,5 +17,31 @@ class UsersController < ApplicationController
       render({ :template => "user_templates/show.html.erb"})
     end
   end
- 
+  def create
+    #Parameters: {"input_username"=>"sdf"}
+    input_username = params.fetch("input_username")
+
+    a_new_user = User.new
+    a_new_user.username = input_username
+    a_new_user.save
+
+    redirect_to("/users/" + a_new_user.username.to_s)
+    #render({ :template => "user_templates/create.html.erb"})
+  end
+  def update
+    #Parameters: {"input_username"=>"NOAHwhy", "user_id"=>"123"}
+
+    the_id = params.fetch("user_id")
+    matching_users = User.where({:id => the_id})
+    the_user = matching_users.at(0)
+
+    input_username = params.fetch("input_username")
+
+    the_user.username = input_username
+    the_user.save
+
+    redirect_to("/users/" + the_user.username.to_s)
+    #render({ :template => "user_templates/update.html.erb"})
+  end
+
 end
