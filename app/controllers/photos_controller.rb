@@ -63,5 +63,20 @@ class PhotosController < ApplicationController
     redirect_to("/photos/" + the_photo.id.to_s)
     #render({ :template => "photo_templates/update.html.erb"})
   end
+
+  def comment
+    #Parameters: {"input_photo_id"=>"777", "input_author_id"=>"111", "input_body"=>"hi"}
+    input_photo_id = params.fetch("input_photo_id")
+    input_author_id = params.fetch("input_author_id")
+    input_body = params.fetch("input_body")
+
+    a_new_comment = Comment.new
+    a_new_comment.photo_id = input_photo_id
+    a_new_comment.author_id = input_author_id
+    a_new_comment.body = input_body
+    a_new_comment.save
+
+    render({ :template => "photo_templates/comment.html.erb"})
+  end
  
 end
