@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
 
     a_new_photo = Photo.new
     a_new_photo.image = input_image
-    a_new_photo.caption = input_image
+    a_new_photo.caption = input_caption
     a_new_photo.owner_id = input_owner_id
     a_new_photo.save
 
